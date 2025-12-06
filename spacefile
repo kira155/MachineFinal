@@ -1,0 +1,3 @@
+name: MyPythonApp
+engine: python3.10
+run: python main.py

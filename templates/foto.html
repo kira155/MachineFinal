@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌸 Prediksi Foto Bunga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 15px;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+    }
+
+    .container-box {
+      width: 100%;
+      max-width: 850px;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(14px);
+      padding: 25px;
+      margin-bottom: 25px;
+      transition: transform 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .btn-modern {
+      background: linear-gradient(90deg, #2193b0, #6dd5ed);
+      color: #fff;
+      font-weight: 600;
+      border-radius: 12px;
+      border: none;
+      padding: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-modern:hover {
+      opacity: 0.95;
+      transform: scale(1.04);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    }
+
+    .preview-img {
+      max-width: 240px;
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 14px;
+      border: 3px solid #fff;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .related-img {
+      width: 100%;
+      max-height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+
+    .related-img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      font-weight: 800;
+      color: #e0f7fa;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      font-size: 1.9rem;
+    }
+
+    h5 {
+      color: #bbdefb;
+      font-weight: 700;
+    }
+
+    .result-text {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #00e676;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      color: #e0f2f1;
+    }
+
+    footer::before {
+      content: "🌸 ";
+    }
+    footer::after {
+      content: " 🌸";
+    }
+
+    /* === Responsive Design === */
+    @media (max-width: 768px) {
+      body {
+        padding: 30px 10px;
+      }
+      .glass-card {
+        padding: 20px;
+      }
+      .btn-modern {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+      .preview-img {
+        max-width: 180px;
+      }
+      h2 {
+        font-size: 1.6rem;
+        text-align: center;
+      }
+      .d-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      .related-img {
+        max-height: 130px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.4rem;
+      }
+      .glass-card {
+        padding: 18px;
+      }
+      .btn-modern {
+        font-size: 0.9rem;
+        padding: 9px;
+      }
+      .related-img {
+        max-height: 120px;
+      }
+      footer {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-box">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+      <h2>📷 Prediksi Foto Bunga</h2>
+      <a href="/" class="btn btn-danger mt-2 mt-md-0">⬅️ Kembali</a>
+    </div>
+
+<!-- Form Upload -->
+<div class="glass-card">
+  <form action="/foto" method="POST" enctype="multipart/form-data">
+    <label for="foto" class="form-label fw-semibold text-white">Pilih Foto atau Ambil Foto:</label>
+    <input class="form-control mb-3" type="file" name="foto" id="foto" 
+           accept="image/*" capture="environment" required>
+    <button type="submit" class="btn btn-modern w-100">🔮 Prediksi Sekarang</button>
+  </form>
+</div>
+
+
+    <!-- Hasil Prediksi -->
+    {% if hasil %}
+    <div class="glass-card text-center">
+      <h5 class="fw-bold">🎯 Hasil Prediksi</h5>
+      <p class="result-text">{{ hasil }}</p>
+      {% if foto_url %}
+        <img src="{{ foto_url }}" class="preview-img" alt="Foto Upload">
+      {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Foto Terkait -->
+    {% if related_fotos %}
+    <div class="glass-card">
+      <h5 class="fw-bold mb-3">📸 Foto Terkait</h5>
+      <div class="row g-2">
+        {% for f in related_fotos %}
+        <div class="col-6 col-md-3">
+          <img src="{{ f }}" class="related-img" alt="Foto Terkait">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+
+  <footer>
+    Created by Kelompok 1
+  </footer>
+
+</body>
+</html>

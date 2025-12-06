@@ -1,0 +1,18 @@
+Bunga Anggrek Bulan
+Bunga Anggrek Hitam
+Bunga Edelweiss
+Bunga Matahari
+Bunga Padma raksasa
+Bunga asoka
+Bunga bangkai raksasa
+Bunga daisy
+Bunga dandelion
+Bunga iris
+Bunga kamboja
+Bunga lavender
+Bunga mawar
+Bunga melati
+Bunga tulip
+setosa
+versicolor
+virginica

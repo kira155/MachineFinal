@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediksi Bunga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; font-family: Arial, sans-serif; }
+    .card { border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); padding: 20px; margin-bottom: 30px; }
+    .card h4 { margin-bottom: 15px; color: #333; font-weight: 600; }
+    .btn { width: 100%; }
+    .result { background-color: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px; text-align: center; margin-top: 30px; }
+    .result img { max-width: 200px; margin: 10px; border-radius: 8px; border: 1px solid #ddd; }
+  </style>
+</head>
+<body class="container py-5">
+
+  <h2 class="text-center mb-5">Prediksi Bunga</h2>
+
+  <!-- Upload Foto -->
+  <div class="card">
+    <h4>Prediksi dari Foto</h4>
+    <form action="/predict_form" method="POST" enctype="multipart/form-data">
+      <input type="file" name="foto" accept="image/*" class="form-control mb-3" required>
+      <button type="submit" class="btn btn-primary">Prediksi Foto</button>
+    </form>
+  </div>
+
+  <!-- Input Numerik -->
+  <div class="card">
+    <h4>Prediksi dari Data Numerik (Iris)</h4>
+    <form action="/predict_form" method="POST">
+      <div class="row g-2 mb-3">
+        <div class="col"><input type="number" step="0.1" name="sepal_length" class="form-control" placeholder="Sepal Length (cm)" required></div>
+        <div class="col"><input type="number" step="0.1" name="sepal_width" class="form-control" placeholder="Sepal Width (cm)" required></div>
+      </div>
+      <div class="row g-2 mb-3">
+        <div class="col"><input type="number" step="0.1" name="petal_length" class="form-control" placeholder="Petal Length (cm)" required></div>
+        <div class="col"><input type="number" step="0.1" name="petal_width" class="form-control" placeholder="Petal Width (cm)" required></div>
+      </div>
+      <button type="submit" class="btn btn-success">Prediksi Numerik</button>
+    </form>
+  </div>
+
+  <!-- Pencarian Teks -->
+  <div class="card">
+    <h4>Cari Nama Bunga</h4>
+    <form action="/predict_form" method="POST">
+      <input type="text" name="search" class="form-control mb-3" placeholder="Masukkan nama bunga..." required>
+      <button type="submit" class="btn btn-info">Cari</button>
+    </form>
+  </div>
+
+  <!-- Hasil Prediksi -->
+  {% if prediction %}
+    <div class="result">
+      <h4>{{ prediction|safe }}</h4>
+      {% if fotos %}
+        {% for foto in fotos %}
+          <img src="{{ foto }}" alt="Foto Bunga">
+        {% endfor %}
+      {% endif %}
+    </div>
+  {% endif %}
+
+</body>
+</html>

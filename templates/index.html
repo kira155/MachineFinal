@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prediksi Bunga</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      background: url("static/bg2.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .menu-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 40px 30px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+      text-align: center;
+      width: 100%;
+      max-width: 560px;
+      animation: fadeIn 0.9s ease;
+    }
+
+    .menu-card h2 {
+      margin-bottom: 20px;
+      color: #1d3557;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+    }
+
+    .menu-card p {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .btn {
+      margin: 12px 0;
+      padding: 15px;
+      font-size: 1.1rem;
+      border-radius: 14px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.25);
+    }
+
+    .desc {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: -4px;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    hr {
+      margin: 30px 0;
+      opacity: 0.25;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #444;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    footer::before {
+      content: "🌸 ";
+    }
+    footer::after {
+      content: " 🌸";
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === Responsive === */
+    @media (max-width: 768px) {
+      .menu-card {
+        padding: 30px 20px;
+      }
+      .menu-card h2 {
+        font-size: 1.6rem;
+      }
+      .btn {
+        padding: 12px;
+        font-size: 1rem;
+      }
+      .desc {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        align-items: flex-start;
+        padding-top: 40px;
+      }
+      .menu-card {
+        padding: 25px 18px;
+        border-radius: 16px;
+      }
+      .menu-card h2 {
+        font-size: 1.4rem;
+      }
+      .btn {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+      .desc {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="menu-card">
+    <h2>🌺 PREDIKSI BUNGA 🌺</h2>
+    <p class="mb-4">Silakan pilih metode prediksi yang ingin digunakan:</p>
+
+    <a href="/foto" class="btn btn-primary w-100">🖼️ Model CNN</a>
+    <p class="desc">Prediksi menggunakan foto bunga.</p>
+
+    <a href="/numerik" class="btn btn-success w-100">📊 Model Decision Tree</a>
+    <p class="desc">Prediksi menggunakan data numerik (Iris-setosa, Iris-versicolor, Iris-virginica).</p>
+
+    <a href="/cari" class="btn btn-info w-100">🔎 Model NLP</a>
+    <p class="desc">Prediksi menggunakan nama bunga.</p>
+
+    <hr>
+    <a href="/logout" class="btn btn-danger w-100">🚪 Logout</a>
+    
+    <footer>
+      Created by Kelompok 1
+    </footer>
+  </div>
+</body>
+</html>

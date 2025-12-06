@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📊 Prediksi Data Numerik</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { 
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      min-height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 15px;
+    }
+
+    .card { 
+      border-radius: 16px; 
+      box-shadow: 0 8px 28px rgba(0,0,0,0.3);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(12px);
+      transition: transform 0.25s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .card:hover { transform: translateY(-4px); }
+
+    h2 { 
+      font-weight: 800; 
+      color: #e0f7fa; 
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+      font-size: 2rem;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .btn-success {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      font-weight: 600;
+      padding: 14px;
+      border-radius: 12px;
+      transition: 0.3s ease;
+      font-size: 1.05rem;
+    }
+
+    .btn-success:hover {
+      background: linear-gradient(90deg, #0072ff, #00c6ff);
+      transform: scale(1.04);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    .btn-secondary {
+      border-radius: 10px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.25);
+      transform: scale(1.05);
+    }
+
+    .related-img {
+      width: 100%; 
+      max-height: 160px; 
+      object-fit: cover; 
+      border-radius: 12px; 
+      margin-bottom: 12px;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .related-img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .result-text {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #00e676;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+    }
+
+    footer {
+      margin-top: 25px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer::before { content: "🌸 "; }
+    footer::after { content: " 🌸"; }
+
+    /* ===== Responsive Adjustments ===== */
+    @media (max-width: 992px) {
+      body { padding: 30px 10px; }
+      h2 { font-size: 1.8rem; text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      .d-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
+      .form-control {
+        font-size: 0.95rem;
+        padding: 10px;
+      }
+      .btn-success {
+        font-size: 0.95rem;
+        padding: 12px;
+      }
+      .related-img {
+        max-height: 130px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+      .card {
+        padding: 18px;
+      }
+      .btn-success {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+      .related-img {
+        max-height: 120px;
+      }
+      footer {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body class="container py-5">
+
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center mb-4 w-100 flex-wrap" style="max-width:850px;">
+    <h2>📊 Prediksi Data Numerik</h2>
+    <a href="/" class="btn btn-secondary mt-2 mt-md-0">⬅️ Kembali</a>
+  </div>
+
+  <!-- Form Input -->
+  <div class="card p-4 mb-4 w-100" style="max-width:850px;">
+    <form action="/numerik" method="POST">
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+          <input type="number" step="0.1" name="sepal_length" class="form-control" placeholder="🌱 Sepal Length (cm)" required>
+        </div>
+        <div class="col-12 col-md-6">
+          <input type="number" step="0.1" name="sepal_width" class="form-control" placeholder="🌱 Sepal Width (cm)" required>
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+          <input type="number" step="0.1" name="petal_length" class="form-control" placeholder="🌸 Petal Length (cm)" required>
+        </div>
+        <div class="col-12 col-md-6">
+          <input type="number" step="0.1" name="petal_width" class="form-control" placeholder="🌸 Petal Width (cm)" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success w-100">🚀 Prediksi Sekarang</button>
+    </form>
+  </div>
+
+  <!-- Hasil Prediksi -->
+  {% if prediction %}
+  <div class="card p-4 mb-4 text-center w-100" style="max-width:850px;">
+    <h5 class="fw-bold text-white">✨ Hasil Prediksi:</h5>
+    <p class="result-text">{{ prediction|safe }}</p>
+  </div>
+  {% endif %}
+
+  <!-- Foto Terkait -->
+  {% if related_fotos %}
+  <div class="card p-4 mb-4 w-100" style="max-width:850px;">
+    <h5 class="fw-bold mb-3 text-white">📸 Foto Terkait:</h5>
+    <div class="row g-3">
+      {% for f in related_fotos %}
+      <div class="col-6 col-md-3">
+        <img src="{{ f }}" class="related-img" alt="Foto Terkait" data-bs-toggle="modal" data-bs-target="#fotoModal" onclick="showModal('{{ f }}')">
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Modal Bootstrap -->
+  <div class="modal fade" id="fotoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-transparent border-0">
+        <div class="modal-body p-0 d-flex justify-content-center align-items-center">
+          <img id="modalImg" src="" style="max-height:80vh; max-width:90vw; object-fit:contain;" class="rounded" alt="Foto Besar">
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <footer>
+    Created by Kelompok 1
+  </footer>
+
+  <!-- JS Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function showModal(src){
+        document.getElementById('modalImg').src = src;
+    }
+  </script>
+
+</body>
+</html>
